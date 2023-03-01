@@ -1,2 +1,14 @@
-package com.adam.rss.client.models;public class RSSFeed {
+package com.adam.rss.client.models;
+
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+
+import java.util.List;
+
+@Value
+@EqualsAndHashCode(callSuper = false)
+@Builder
+public class RSSFeed {
+    List<RSSFeedItem> rssFeedItemList;
 }

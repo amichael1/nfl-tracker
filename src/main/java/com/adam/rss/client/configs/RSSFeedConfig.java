@@ -1,12 +1,15 @@
-package com.adam.rss.client.models;
+package com.adam.rss.client.configs;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 
+import java.net.URL;
+
 @Value
 @EqualsAndHashCode(callSuper = false)
 @Builder
-public record RSSFeed(String url, String name){
-
+public class RSSFeedConfig {
+    URL url;
+    String name;
 }

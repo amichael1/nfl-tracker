@@ -1,4 +1,4 @@
-package com.adam.rss.client.models;
+package com.adam.rss.client.configs;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -9,6 +9,6 @@ import java.util.List;
 @Value
 @EqualsAndHashCode(callSuper = false)
 @Builder
-public record RSSFeeds (List<RSSFeed> rssFeeds) {
-
+public class RSSFeedsConfig {
+    List<RSSFeedConfig> rssFeedConfigs;
 }

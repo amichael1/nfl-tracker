@@ -1,2 +1,8 @@
-package com.adam.rss.client.services;public interface RSSFeedReader {
+package com.adam.rss.client.services;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public interface FeedReader {
+    void read();
 }

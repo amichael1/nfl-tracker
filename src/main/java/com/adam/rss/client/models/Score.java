@@ -1,2 +1,15 @@
-package com.adam.rss.client.models;public class Score {
+package com.adam.rss.client.models;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+public class Score {
+    String name;
+    String score;
 }

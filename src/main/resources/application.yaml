@@ -1,1 +1,29 @@
+adam.rss.client:
+  feeds:
+    ./ESPN: "https://www.espn.com/espn/rss/nfl/news"
+    ./FOX: "https://api.foxsports.com/v2/content/optimized-rss?partnerKey=MB0Wehpmuj2lUhuRhQaafhBjAJqaPU244mlTDK1i&size=30&tags=fs/nfl"
+    ./YAHOO: "https://sports.yahoo.com/nfl/rss/"
 
+spring.task:
+  scheduling:
+    thread-name-prefix: "task-"
+    pool:
+      size: 2
+  execution.pool:
+    max-size: 16
+    queue-capacity: 100
+    keep-alive: "10s"
+
+adam.odds.client:
+  base-url: "https://api.the-odds-api.com"
+  odds:
+    uri: "/v4/sports/americanfootball_nfl/odds"
+    regions: "us"
+    markets: "h2h,spreads,totals"
+    ./dateFormat: "iso"
+    ./oddsFormat: "american"
+    ./apiKey: "3c67836536c790601b6bb45915a1d2ce"
+    ./bookmakers: "draftkings,fanduel,barstool,pointsbetus,betmgm"
+  scores:
+    uri: "/v4/sports/americanfootball_nfl/scores"
+    ./apiKey: "${GAME_TRACKER_API_KEY}"

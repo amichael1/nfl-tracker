@@ -6,10 +6,10 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan(basePackages = "com.adam")
-public class RSSFeedService {
+public class NFLFeeds {
 
     public static void main(String[] args) {
-        SpringApplication.run(RSSFeedService.class, args);
+        SpringApplication.run(NFLFeeds.class, args);
     }
 
 }

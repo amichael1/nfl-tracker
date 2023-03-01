@@ -1,6 +1,6 @@
 package com.adam.rss.client.services;
 
-public interface GameUpdater {
+public interface GameTracker {
 
     void getGameUpdates();
 }

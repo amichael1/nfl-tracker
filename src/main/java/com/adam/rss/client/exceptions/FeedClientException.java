@@ -1,7 +1,7 @@
 package com.adam.rss.client.exceptions;
 
-public class RSSFeedClientException extends RuntimeException{
-    public RSSFeedClientException(Exception ex) {
+public class FeedClientException extends RuntimeException {
+    public FeedClientException(Exception ex) {
         super(ex);
     }
 }

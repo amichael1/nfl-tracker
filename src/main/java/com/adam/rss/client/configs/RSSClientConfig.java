@@ -1,22 +1,46 @@
 package com.adam.rss.client.configs;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-import java.util.List;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-
-@lombok.Value
-@EqualsAndHashCode(callSuper = false)
+@Getter
+@Setter
 @AllArgsConstructor
-public record RSSConfig(@org.springframework.beans.factory.annotation.Value("${app.feeds.feed}") List<RSSFeed> feeds) {
+@NoArgsConstructor
+@Configuration
+@ConfigurationProperties(prefix = "adam.rss.client")
+public class RSSClientConfig {
+    Map<String, String> feeds;
 
-    @Data
-    @Setter
-    @Getter
-    @AllArgsConstructor
-    class RSSFeed{
-        String url;
-        String name;
+    @Bean
+    public RSSFeedsConfig rssFeedConfig() {
+        return RSSFeedsConfig
+                .builder()
+                .rssFeedConfigs(
+                        feeds.keySet()
+                                .parallelStream()
+                                .map((k) -> {
+                                    try {
+                                        return RSSFeedConfig
+                                                .builder()
+                                                .name(k)
+                                                .url(new URL(feeds.get(k)))
+                                                .build();
+                                    } catch (MalformedURLException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                })
+                                .collect(Collectors.toList()))
+                .build();
     }
 }

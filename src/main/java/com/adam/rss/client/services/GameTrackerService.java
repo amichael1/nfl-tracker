@@ -1,7 +1,7 @@
 package com.adam.rss.client.services;
 
 import com.adam.rss.client.configs.GameTrackerWebClientConfig;
-import com.adam.rss.client.models.NFLResponse;
+import com.adam.rss.client.models.GameTrackerResponse;
 import com.adam.rss.client.util.WebClientBuilderUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 @EnableAsync
-public class OddsApiService implements GameTracker {
+public class GameTrackerService implements GameTracker {
 
     private final List<GameTrackerWebClientConfig> nflWebClients;
 
@@ -23,7 +23,7 @@ public class OddsApiService implements GameTracker {
                         .get()
                         .uri(uriBuilder -> WebClientBuilderUtil.nflWebClientUri(uriBuilder, r))
                         .retrieve()
-                        .bodyToFlux(NFLResponse.class))
+                        .bodyToFlux(GameTrackerResponse.class))
                 .toList()
                 .parallelStream()
                 .forEach(r -> r.subscribe(System.out::println));

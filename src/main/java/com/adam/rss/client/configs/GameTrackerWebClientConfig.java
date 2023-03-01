@@ -12,7 +12,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Builder
-public class NFLWebClientConfig {
+public class GameTrackerWebClientConfig {
     WebClient webClient;
     String path;
     Map<String, String> queryParams;

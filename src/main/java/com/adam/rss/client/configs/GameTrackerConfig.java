@@ -1,6 +1,9 @@
 package com.adam.rss.client.configs;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +20,7 @@ import java.util.stream.Stream;
 @NoArgsConstructor
 @Configuration
 @ConfigurationProperties(prefix = "adam.odds.client")
-public class OddsClientConfig {
+public class GameTrackerConfig {
     private static final String REQUEST_URI = "uri";
 
     private String baseUrl;
@@ -28,9 +31,9 @@ public class OddsClientConfig {
 
 
     @Bean
-    public List<NFLWebClientConfig>  nflWebClients() {
+    public List<GameTrackerWebClientConfig> nflWebClients() {
         return Stream.of(odds, scores)
-                .map(r -> NFLWebClientConfig.builder()
+                .map(r -> GameTrackerWebClientConfig.builder()
                         .path(r.remove(REQUEST_URI))
                         .queryParams(r)
                         .webClient(WebClient.builder()

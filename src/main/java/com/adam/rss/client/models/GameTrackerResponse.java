@@ -1,7 +1,10 @@
 package com.adam.rss.client.models;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +13,7 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class NFLResponse {
+public class GameTrackerResponse {
     String id;
     @JsonAlias("sport_key")
     String sportKey;

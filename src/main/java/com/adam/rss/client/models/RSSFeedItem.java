@@ -1,10 +1,17 @@
-package com.adam.scrapper.models;
+package com.adam.rss.client.models;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+
+import java.util.Date;
 
 @Value
-@ToString
-public record RssFeedItem(String title, String description, String pubDate) {
+@EqualsAndHashCode(callSuper = false)
+@Builder
+public class RSSFeedItem {
 
-
+    String title;
+    String description;
+    Date pubDate;
 }
