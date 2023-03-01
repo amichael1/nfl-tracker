@@ -73,4 +73,5 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:
+        GAME_TRACKER_API_KEY: ${{GAME_TRACKER_API_KEY}}
         category: "/language:${{matrix.language}}"
